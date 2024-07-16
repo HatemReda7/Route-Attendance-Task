@@ -8,7 +8,7 @@ class BlueRouteIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      blueroute,
+      blueRoute,
       fit: BoxFit.contain,
       color: secondry,
     );

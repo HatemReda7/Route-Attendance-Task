@@ -1,8 +1,8 @@
 import 'package:attendance_task_route/core/utils/app_colors.dart';
-import 'package:attendance_task_route/features/Home%20Layout/presentation/pages/home_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'config/app_routes.dart';
 import 'core/utils/my_bloc_observer.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           debugShowCheckedModeBanner: false,
-          home: const HomePage(),
+          onGenerateRoute: (settings) => RouteGenerator.getRoute(settings),
         );
       },
     );
