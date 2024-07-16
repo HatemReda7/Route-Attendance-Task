@@ -35,22 +35,24 @@ class _HomePageState extends State<HomePage> {
           }
         },
         builder: (context, state) {
-          return Scaffold(
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BlueRouteIcon(),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  const SearchBarItem(),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  ProductList(allProducts: HomeTabCubit.get(context).products),
-                ],
+          return SafeArea(
+            child: Scaffold(
+              body: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const BlueRouteIcon(),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    const SearchBarItem(),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    ProductList(allProducts: HomeTabCubit.get(context).products),
+                  ],
+                ),
               ),
             ),
           );

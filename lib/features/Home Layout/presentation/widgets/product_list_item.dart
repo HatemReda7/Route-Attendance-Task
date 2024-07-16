@@ -50,14 +50,14 @@ class ProductListItem extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     product.title ?? "",
-                    style: title,
+                    style: description,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -67,12 +67,12 @@ class ProductListItem extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text("EGP ${product.price}", style: title),
+                  Text("EGP ${product.price}", style: description),
                   Row(
                     children: [
                       Text(
                         "Review (${product.rating})",
-                        style: rating,
+                        style: description,
                       ),
                       const Icon(
                         Icons.star,
@@ -82,7 +82,7 @@ class ProductListItem extends StatelessWidget {
                       Icon(
                         Icons.add_circle_rounded,
                         color: secondry,
-                        size: 30.sp,
+                        size: 25.sp,
                       ),
                     ],
                   )
