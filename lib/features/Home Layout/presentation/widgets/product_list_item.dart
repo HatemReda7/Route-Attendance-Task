@@ -13,25 +13,25 @@ class ProductListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: borderColor, width: 2),
+        border: Border.all(color: borderColor, width: 2.w),
         borderRadius: BorderRadius.circular(15.r),
         color: Colors.white,
       ),
       child: Column(
         children: [
           SizedBox(
-            height: 60.h,
+            height: 80.h,
             width: double.infinity,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Image.network(product.thumbnail ?? ""),
                 Positioned(
-                  right: 5,
-                  top: 5,
+                  right: 5.w,
+                  top: 5.h,
                   child: Container(
-                    height: 30,
-                    width: 30,
+                    height: 30.h,
+                    width: 30.w,
                     decoration: ShapeDecoration(
                       color: primary,
                       shape: const OvalBorder(),
@@ -49,18 +49,18 @@ class ProductListItem extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7.w,vertical: 5.h),
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     product.title ?? "",
                     style:
                         TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp,),
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 3.h,),
                   Text(
                     product.description ?? "",
                     style:
@@ -68,10 +68,8 @@ class ProductListItem extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 5.h,),
                   Text("EGP ${product.price}",style:
                       TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),),
-                  const Spacer(),
                   Row(
                     children: [
                       Text(
@@ -83,7 +81,7 @@ class ProductListItem extends StatelessWidget {
                         Icons.star,
                         color: Colors.yellow,
                       ),
-                      SizedBox(width: 15.w,),
+                      const Spacer(),
                       Icon(
                         Icons.add_circle_rounded,
                         color: secondry,

@@ -1,107 +1,60 @@
-import 'package:attendance_task_route/core/api/api_manager.dart';
-import 'package:attendance_task_route/core/utils/app_images.dart';
+import 'package:attendance_task_route/features/Home%20Layout/data/data_sources/home_tab_remote.dart';
+import 'package:attendance_task_route/features/Home%20Layout/presentation/manager/home_tab_cubit.dart';
+import 'package:attendance_task_route/features/Home%20Layout/presentation/widgets/blue_route.dart';
+import 'package:attendance_task_route/features/Home%20Layout/presentation/widgets/product_list.dart';
+import 'package:attendance_task_route/features/Home%20Layout/presentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../widgets/product_list_item.dart';
+import '../manager/home_tab_state.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 90.w,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Image.asset(
-            blueroute,
-            fit: BoxFit.contain,
-            color: secondry,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.white,
-        bottomOpacity: 0,
-        elevation: 0,
-      ),
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(8.0.r),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  height: 50.h,
-                  width: 300.w,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "What do you search for?",
-                      hintStyle: const TextStyle(fontWeight: FontWeight.w300),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          borderSide:
-                              BorderSide(color: secondry, width: 2)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          borderSide:
-                              BorderSide(color: secondry, width: 2)),
-                      disabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          borderSide:
-                              BorderSide(color: secondry, width: 2)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          borderSide:
-                              BorderSide(color: secondry, width: 2)),
-                      prefixIcon: ImageIcon(
-                        const AssetImage(search),
-                        color: secondry,
-                        size: 30.sp,
-                      ),
-                    ),
+    return BlocProvider(
+      create: (context) => HomeTabCubit(HomeTabRemote())..getAllProducts(),
+      child: BlocConsumer<HomeTabCubit, HomeTabState>(
+        listener: (context, state) {
+          if (state is HomeLoadingState) {
+            const Center(child: CircularProgressIndicator());
+            debugPrint('loading...');
+          }
+          if (state is HomeErrorState) {
+            debugPrint('error...');
+            const Center(child: Text("Something went wrong!"));
+          }
+          if (state is HomeSuccessState) {
+            debugPrint('working...');
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const BlueRouteIcon(),
+                  SizedBox(
+                    height: 20.h,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 10.w),
-                  child: ImageIcon(
-                    const AssetImage(cart),
-                    color: secondry,
-                    size: 30.sp,
+                  const SearchBarItem(),
+                  SizedBox(
+                    height: 5.h,
                   ),
-                ),
-              ],
+                  ProductList(allProducts: HomeTabCubit.get(context).products),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 5.h,),
-          Expanded(
-            child: FutureBuilder(future: ApiManager.getAllProducts(), builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (snapshot.hasError) {
-                debugPrint("${snapshot.error}");
-                return const Center(child: Text("Something went wrong!"));
-              }
-              var products = snapshot.data?.products ?? [];
-              return GridView.builder(
-                padding: const EdgeInsets.all(20),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.75,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16),
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  return ProductListItem(product: products[index],);
-                },
-              );
-            },),
-          )
-        ],
+          );
+        },
       ),
     );
   }
