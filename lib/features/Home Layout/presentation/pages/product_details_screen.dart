@@ -16,7 +16,7 @@ class ProductDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Product Details",
-          style: mainText.copyWith(color: secondry, fontSize: 20),
+          style: mainText.copyWith(color: secondry, fontSize: 20.sp),
         ),
         actions: [
           ImageIcon(
@@ -41,17 +41,17 @@ class ProductDetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 200.h,
-                width: 400.w,
+                height: 300.h,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(product.thumbnail ?? ""),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.circular(15.r),
                 ),
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 20.h),
               Text(
                 product.title ?? "",
                 style: mainText,
@@ -59,7 +59,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.h),
+                padding: EdgeInsets.symmetric(vertical: 15.h),
                 child: Row(
                   children: [
                     Text(
@@ -68,14 +68,14 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     Container(
-                      width: 100.w,
-                      height: 35.h,
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      width: 120.w,
+                      height: 45.h,
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
                       decoration: BoxDecoration(
                         border: Border.all(
                             width: 2.w,
                             strokeAlign: BorderSide.strokeAlignCenter),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(20.r),
                       ),
                       alignment: Alignment.center,
                       child: Text(
@@ -93,17 +93,17 @@ class ProductDetailsScreen extends StatelessWidget {
                     color: Colors.yellow,
                     size: 30.sp,
                   ),
-                  SizedBox(width: 8.w),
+                  SizedBox(width: 10.w),
                   Text(
                     "(${product.rating})",
                     style: description,
                   ),
                 ],
               ),
-              SizedBox(height: 15.h),
+              SizedBox(height: 20.h),
               Container(
-                width: 120.w,
-                height: 40.h,
+                width: 140.w,
+                height: 50.h,
                 decoration: BoxDecoration(
                   color: secondry,
                   borderRadius: BorderRadius.circular(20),
@@ -129,78 +129,83 @@ class ProductDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 15.h),
+              SizedBox(height: 20.h),
               Text(
                 "Description",
-                style: mainText.copyWith(fontSize: 16),
+                style: mainText.copyWith(fontSize: 16.sp),
               ),
               SizedBox(
-                height: 10.h,
+                height: 15.h,
               ),
               Text(
                 product.description ?? "",
                 maxLines: 5,
                 overflow: TextOverflow.ellipsis,
                 style: mainText.copyWith(
-                    fontWeight: FontWeight.w300, fontSize: 12),
+                    fontWeight: FontWeight.w300, fontSize: 12.sp),
               ),
-              SizedBox(height: 15.h),
+              SizedBox(height: 20.h),
               Text(
                 "Reviews",
                 style: mainText,
               ),
-              SizedBox(height: 15.h),
-              if (product.reviews != null && product.reviews!.isNotEmpty)
-                SizedBox(
-                  height: 200.h, // Adjust height as needed
-                  child: ListView.builder(
-                    itemCount: product.reviews!.length,
-                    itemBuilder: (context, index) {
-                      final review = product.reviews![index];
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 8.h),
-                        child: Card(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  review.reviewerName ?? "Anonymous",
-                                  style: mainText,
-                                ),
-                                SizedBox(height: 5.h),
-                                Text(
-                                  review.comment ?? "",
-                                  style: description.copyWith(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 12),
-                                ),
-                                SizedBox(height: 5.h),
-                                Row(
-                                  children: List.generate(
-                                    review.rating?.toInt() ?? 0,
-                                    (index) => Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 15.sp,
+              SizedBox(height: 20.h),
+              product.reviews != null && product.reviews!.isNotEmpty
+                  ? SizedBox(
+                      height: 200.h,
+                      child: ListView.builder(
+                        itemCount: product.reviews!.length,
+                        itemBuilder: (context, index) {
+                          final review = product.reviews![index];
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 10.h),
+                            child: Card(
+                              child: Padding(
+                                padding: EdgeInsets.all(10.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      review.reviewerName ?? "Anonymous",
+                                      style: mainText,
                                     ),
-                                  ),
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                      review.comment ?? "",
+                                      style: description.copyWith(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.sp),
+                                    ),
+                                    SizedBox(height: 5.h),
+                                    Row(
+                                      children: List.generate(
+                                        review.rating?.toInt() ?? 0,
+                                        (index) => Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                          size: 15.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              SizedBox(height: 10.h),
+                          );
+                        },
+                      ),
+                    )
+                  : Center(
+                      child: Text(
+                      "No Reviews!",
+                      style: mainText,
+                    )),
+              SizedBox(height: 15.h),
               Text(
                 "Total Price",
-                style: mainText.copyWith(color: secondry, fontSize: 18),
+                style: mainText.copyWith(color: secondry, fontSize: 18.sp),
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 15.h),
               Row(
                 children: [
                   Text(
@@ -215,13 +220,13 @@ class ProductDetailsScreen extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       "Add to cart",
-                      style: mainText.copyWith(
-                          fontSize: 16, color: Colors.white),
+                      style:
+                          mainText.copyWith(fontSize: 16.sp, color: Colors.white),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 15.h),
+              SizedBox(height: 20.h),
             ],
           ),
         ),
