@@ -8,7 +8,7 @@ import '../features/Home Layout/presentation/pages/product_details_screen.dart';
 class Routes {
   static const String splash = "/";
   static const String productDetailsScreen = "Product Details Screen";
-  static const String HomeScreen = "Home Screen";
+  static const String homeScreen = "Home Screen";
 }
 
 class RouteGenerator {
@@ -25,7 +25,7 @@ class RouteGenerator {
         {
           return MaterialPageRoute(builder: (_) => const SplachScreen());
         }
-      case Routes.HomeScreen:
+      case Routes.homeScreen:
         {
           return MaterialPageRoute(builder: (_) => const HomePage());
         }

@@ -11,7 +11,7 @@ class SplachScreen extends StatelessWidget {
     await Future.delayed(const Duration(seconds: 2));
     if (!context.mounted) return;
 
-    Navigator.of(context).pushReplacementNamed(Routes.HomeScreen);
+    Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
   }
 
   @override
