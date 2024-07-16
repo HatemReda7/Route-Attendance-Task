@@ -13,8 +13,8 @@ class SearchBarItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 50.h,
-          width: 300.w,
+          height: 60.h,
+          width: 320.w,
           child: SearchBar(
             backgroundColor: const MaterialStatePropertyAll(Colors.white),
             elevation: const MaterialStatePropertyAll(0),
