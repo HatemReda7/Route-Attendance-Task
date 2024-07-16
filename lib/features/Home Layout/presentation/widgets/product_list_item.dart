@@ -1,28 +1,25 @@
 import 'package:attendance_task_route/core/utils/app_images.dart';
-import 'package:attendance_task_route/features/Home%20Layout/data/models/ProductModel.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:attendance_task_route/features/Home%20Layout/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class ProductListItem extends StatelessWidget {
-  Products product;
+  final Products product;
 
-  ProductListItem({required this.product, super.key});
+  const ProductListItem({required this.product, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400.w,
-      height: 300.h,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blueAccent, width: 1),
+        border: Border.all(color: borderColor, width: 2),
         borderRadius: BorderRadius.circular(15.r),
         color: Colors.white,
       ),
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 60.h,
             width: double.infinity,
             child: Stack(
@@ -50,48 +47,52 @@ class ProductListItem extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(7.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.title ?? "",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
-                ),
-                Text(
-                  product.description ?? "",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  height: 3.w,
-                ),
-                Text("EGP ${product.price}",style:
-                    TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),),
-                Row(
-                  children: [
-                    Text(
-                      "Review (${product.rating})",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 11.sp),
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    SizedBox(width: 10.w,),
-                    Icon(
-                      Icons.add_circle_rounded,
-                      color: secondry,
-                      size: 30.sp,
-                    ),
-                  ],
-                )
-              ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 7.w,vertical: 5.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.title ?? "",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp,),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 3.h,),
+                  Text(
+                    product.description ?? "",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 5.h,),
+                  Text("EGP ${product.price}",style:
+                      TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      Text(
+                        "Review (${product.rating})",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 10.sp),
+                      ),
+                      const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(width: 15.w,),
+                      Icon(
+                        Icons.add_circle_rounded,
+                        color: secondry,
+                        size: 30.sp,
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],
