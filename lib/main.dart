@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(390, 1080),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_ , child) {
+      builder: (_, child) {
         return MaterialApp(
           theme: ThemeData(
             textSelectionTheme: TextSelectionThemeData(
@@ -33,4 +33,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
