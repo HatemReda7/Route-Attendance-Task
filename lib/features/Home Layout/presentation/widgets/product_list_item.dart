@@ -1,4 +1,5 @@
 import 'package:attendance_task_route/core/utils/app_images.dart';
+import 'package:attendance_task_route/core/utils/app_style.dart';
 import 'package:attendance_task_route/features/Home%20Layout/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,26 +57,22 @@ class ProductListItem extends StatelessWidget {
                 children: [
                   Text(
                     product.title ?? "",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp,),
+                    style: title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     product.description ?? "",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 12.sp),
+                    style: description,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text("EGP ${product.price}",style:
-                      TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),),
+                  Text("EGP ${product.price}", style: title),
                   Row(
                     children: [
                       Text(
                         "Review (${product.rating})",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 10.sp),
+                        style: rating,
                       ),
                       const Icon(
                         Icons.star,

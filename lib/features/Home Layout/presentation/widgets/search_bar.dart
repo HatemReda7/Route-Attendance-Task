@@ -1,3 +1,4 @@
+import 'package:attendance_task_route/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -21,12 +22,11 @@ class SearchBarItem extends StatelessWidget {
               color: secondry,
               size: 30.sp,
             ),
-            textStyle: MaterialStatePropertyAll(TextStyle(color: secondry,fontWeight: FontWeight.w400)),
+            textStyle: MaterialStatePropertyAll(description.copyWith(color: secondry,decorationThickness: 0)),
             side: MaterialStatePropertyAll(
                 BorderSide(color: secondry, width: 2.w)),
             hintText: "What do you want to search for?",
-            hintStyle: const MaterialStatePropertyAll(
-                TextStyle(fontWeight: FontWeight.w300)),
+            hintStyle: MaterialStatePropertyAll(searchText),
           ),
         ),
         Padding(
