@@ -27,7 +27,7 @@ class ProductListItem extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 100.h,
+              height: 140.h,
               width: double.infinity,
               child: Stack(
                 alignment: Alignment.center,
@@ -56,7 +56,7 @@ class ProductListItem extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                padding: EdgeInsets.symmetric(horizontal: 8.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -88,7 +88,7 @@ class ProductListItem extends StatelessWidget {
                         Icon(
                           Icons.add_circle_rounded,
                           color: secondry,
-                          size: 25.sp,
+                          size: 30.sp,
                         ),
                       ],
                     )
