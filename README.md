@@ -11,7 +11,7 @@ A new Flutter project.
 ![Home_page](https://github.com/user-attachments/assets/b272b58d-e32c-4502-986b-0afa7a94aee3)
 
 3-Product Details Screen
-![Product_Details_Screen](https://github.com/user-attachments/assets/9ada3037-ed68-4253-a7f6-55a6e8abdd5d)
+![Product_Details_Screen](https://github.com/user-attachments/assets/ca2277db-2600-4aee-afc3-7012ddd57fd1)
 
 
 
