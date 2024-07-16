@@ -2,6 +2,19 @@
 
 A new Flutter project.
 
+## ScreenShots
+
+1-Splash Screen
+![Splash_screen](https://github.com/user-attachments/assets/ac1e2620-3d66-470d-a67f-72e372178f72)
+
+2- HomePage Screen
+![Home_page](https://github.com/user-attachments/assets/b272b58d-e32c-4502-986b-0afa7a94aee3)
+
+3-Product Details Screen
+![Product_Details_Screen](https://github.com/user-attachments/assets/9ada3037-ed68-4253-a7f6-55a6e8abdd5d)
+
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
