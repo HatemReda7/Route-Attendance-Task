@@ -38,19 +38,20 @@ class _HomePageState extends State<HomePage> {
           return SafeArea(
             child: Scaffold(
               body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 15.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const BlueRouteIcon(),
                     SizedBox(
-                      height: 15.h,
+                      height: 20.h,
                     ),
                     const SearchBarItem(),
                     SizedBox(
-                      height: 5.h,
+                      height: 15.h,
                     ),
-                    ProductList(allProducts: HomeTabCubit.get(context).products),
+                    ProductList(
+                        allProducts: HomeTabCubit.get(context).products),
                   ],
                 ),
               ),
